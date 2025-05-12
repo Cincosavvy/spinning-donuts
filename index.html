@@ -10,6 +10,7 @@
   </style>
 </head>
 <body>
+  <h1>Spinning Donut Animation</h1>
   <canvas id="donutCanvas" width="400" height="400"></canvas>
 
   <script>
@@ -23,6 +24,8 @@
       let b = new Array(1760).fill(" ");
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Start drawing the donut
       for (j = 0; j < 6.28; j += 0.07) {
         for (i = 0; i < 6.28; i += 0.02) {
           let c = Math.sin(i);
@@ -44,25 +47,27 @@
           
           if (y > 0 && y < 22 && x > 0 && x < 80 && D > z[o]) {
             z[o] = D;
-            b[o] = ".,-~#@$*)"[N > 0 ? N : 0];
+            b[o] = ".,-~#@$*)"[N > 0 ? N : 0]; // Assign characters based on depth
           }
         }
       }
 
+      // Drawing the donut frame
       for (let k = 0; k < 1760; k++) {
         let char = b[k];
         let x = k % 80;
         let y = Math.floor(k / 80);
         if (char !== " ") {
-          ctx.fillText(char, x * 10, y * 10);
+          ctx.fillText(char, x * 10, y * 10);  // Draw the character at the appropriate position
         }
       }
 
-      A += 0.04;
+      A += 0.04;  // Adjust the angle to rotate the donut
       B += 0.02;
-      setTimeout(drawDonut, 30); // Repeat animation
+      setTimeout(drawDonut, 30); // Repeat the animation
     }
 
+    // Initialize the drawing
     drawDonut();
   </script>
 </body>
