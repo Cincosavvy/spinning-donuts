@@ -18,12 +18,15 @@
     const ctx = canvas.getContext("2d");
     let A = 0, B = 0;
 
+    // Set a larger font size
+    ctx.font = "12px monospace";
+
     function drawDonut() {
       let i, j;
       let z = new Array(1760).fill(0);
       let b = new Array(1760).fill(" ");
       
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear the canvas before drawing
 
       // Start drawing the donut
       for (j = 0; j < 6.28; j += 0.07) {
@@ -51,6 +54,9 @@
           }
         }
       }
+
+      // Debugging: Print a message every time the donut is drawn
+      console.log("Drawing frame...");
 
       // Drawing the donut frame
       for (let k = 0; k < 1760; k++) {
